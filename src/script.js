@@ -5,7 +5,11 @@ const playerPoints = document.querySelector(".playerPoints");
 const options = document.querySelectorAll(".options button");
 
 options.forEach((option) => {
-  option.addEventListener("click", () => {
+  option.addEventListener("click", (event) => {
+    if (event.target.disabled) return;
+
+    options.forEach(button => button.disabled = true);
+
     computer.classList.add("shakeComputer");
     player.classList.add("shakePlayer");
 
@@ -20,9 +24,6 @@ options.forEach((option) => {
       const randomIndex = Math.floor(Math.random() * 3);
       const computerChoice = choices[randomIndex];
       computer.src = "./gameImages/" + computerChoice + "Computer.png";
-
-      console.log("Player choice image path: ", player.src);
-      console.log("Computer choice image path: ", computer.src);
 
       let cPoints = parseInt(computerPoints.innerHTML);
       let pPoints = parseInt(playerPoints.innerHTML);
@@ -46,6 +47,9 @@ options.forEach((option) => {
           playerPoints.innerHTML = pPoints + 1;
         }
       }
+      
+      options.forEach(button => button.disabled = false);
+      
     }, 900);
   });
 });
