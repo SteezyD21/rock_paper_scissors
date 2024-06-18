@@ -8,7 +8,13 @@ options.forEach((option) => {
   option.addEventListener("click", (event) => {
     if (event.target.disabled) return;
 
-    options.forEach(button => button.disabled = true);
+    options.forEach((button) => (button.disabled = true));
+
+    const computerChoice = document.querySelector(".computer img");
+    computerChoice.src = "./gameImages/stoneComputer.png";
+
+    const playerChoice = document.querySelector(".player img");
+    playerChoice.src = "./gameImages/stonePlayer.png";
 
     computer.classList.add("shakeComputer");
     player.classList.add("shakePlayer");
@@ -47,9 +53,8 @@ options.forEach((option) => {
           playerPoints.innerHTML = pPoints + 1;
         }
       }
-      
-      options.forEach(button => button.disabled = false);
-      
+
+      options.forEach((button) => (button.disabled = false));
     }, 900);
   });
 });
