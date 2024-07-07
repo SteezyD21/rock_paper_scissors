@@ -1,7 +1,7 @@
 ***DIR STRUCTURE***
 
     |
-    |---gemeImages
+    |---gameImages
     |   |
     |   |---- (images)
     |
